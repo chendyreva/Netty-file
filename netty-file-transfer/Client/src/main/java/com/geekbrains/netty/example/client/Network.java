@@ -1,16 +1,23 @@
 package com.geekbrains.netty.example.client;
 
 import com.geekbrains.netty.example.common.AbstractMessage;
+import com.geekbrains.netty.example.common.FileRequest;
 import io.netty.handler.codec.serialization.ObjectDecoderInputStream;
 import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.Socket;
 
 public class Network {
     private static Socket socket;
     private static ObjectEncoderOutputStream out;
     private static ObjectDecoderInputStream in;
+
 
     private static final int MAX_OBJ_SIZE = 100 * 1024 * 1024;
 
@@ -52,9 +59,13 @@ public class Network {
         return false;
     }
 
+
     public static AbstractMessage readObject() throws ClassNotFoundException, IOException {
         Object obj = in.readObject();
         return (AbstractMessage) obj;
     }
+
 }
+
+
 

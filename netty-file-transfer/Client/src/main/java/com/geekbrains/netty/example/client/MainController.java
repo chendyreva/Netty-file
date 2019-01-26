@@ -23,6 +23,8 @@ public class MainController implements Initializable {
     TextField tfFileName;
 
     @FXML
+    TextField sendMsg;
+    @FXML
     ListView<String> filesList;
 
     @Override
@@ -79,4 +81,13 @@ public class MainController implements Initializable {
             });
         }
     }
+
+
+    public void pressOnSendBtn(ActionEvent actionEvent) {
+        if (sendMsg.getLength() > 0) {
+            Network.sendMsg(new FileRequest(sendMsg.getText()));
+            sendMsg.clear();
+        }
+    }
 }
+
