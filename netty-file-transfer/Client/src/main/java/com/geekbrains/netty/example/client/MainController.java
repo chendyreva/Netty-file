@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -23,16 +24,12 @@ public class MainController implements Initializable {
     TextField tfFileName;
 
     @FXML
-    TextField sendMsg;
-    @FXML
     ListView<String> filesList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Network.start();
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
+        Thread t = new Thread(() -> {
                 try {
                     while (true) {
                         AbstractMessage am = Network.readObject();
@@ -47,7 +44,6 @@ public class MainController implements Initializable {
                 } finally {
                     Network.stop();
                 }
-            }
         });
         t.setDaemon(true);
         t.start();
@@ -83,10 +79,10 @@ public class MainController implements Initializable {
     }
 
 
-    public void pressOnSendBtn(ActionEvent actionEvent) {
-        if (sendMsg.getLength() > 0) {
-            Network.sendMsg(new FileRequest(sendMsg.getText()));
-            sendMsg.clear();
+    public void pressOnSendBtn(ActionEvent actionEvent)  {
+        if (tfFileName.getLength() > 0) {
+            Network.sendMsg(new FileMessage());
+            tfFileName.clear();
         }
     }
 }
