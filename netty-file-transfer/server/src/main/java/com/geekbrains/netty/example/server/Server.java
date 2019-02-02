@@ -1,5 +1,6 @@
 package com.geekbrains.netty.example.server;
 
+import java.lang.Exception;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -13,23 +14,25 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 
 public class Server {
-    private static final int MAX_OBJ_SIZE = 100 * 1024 * 1024;
+    public Server() {
+    }
+//    private static final int MAX_OBJ_SIZE = 100 * 1024 * 1024;
 
     public void run() throws Exception {
         EventLoopGroup mainGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(mainGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(
-                                    new ObjectDecoder(MAX_OBJ_SIZE, ClassResolvers.cacheDisabled(null)),
-                                    new ObjectEncoder(),
-                                    new MainHandler()
-                            );
+//                            socketChannel.pipeline().addLast(
+//                                    new ObjectDecoder(MAX_OBJ_SIZE, ClassResolvers.cacheDisabled(null)),
+//                                    new ObjectEncoder(),
+//                                    new MainHandler()
+//                            );
+                            socketChannel.pipeline().addLast(new ProtocolHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
