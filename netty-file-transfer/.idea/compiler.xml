@@ -9,6 +9,7 @@
         <module name="Client" />
         <module name="common" />
         <module name="server" />
+        <module name="userinterface" />
       </profile>
     </annotationProcessing>
   </component>

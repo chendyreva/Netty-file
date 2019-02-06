@@ -6,27 +6,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.HBox?>
+
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <VBox alignment="CENTER_RIGHT" prefHeight="600.0" prefWidth="600.0"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.netty.example.client.MainController"
-      style="-fx-background-color: linear-gradient(#fff 0%, #eee 50%, #ddd 100%, #bbb 100%);" fx:id="rootNode">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.netty.example.netty.example.client.MainController"
+      style="-fx-background-color: pink;" fx:id="rootNode">
     <HBox>
         <TextField HBox.hgrow="ALWAYS" fx:id="tfFileName" promptText="Укажите имя файла на сервере, который хотите скачать" focusTraversable="false"/>
         <Button text="Download" onAction="#pressOnDownloadBtn" />
     </HBox>
-    <Button text="Send" onAction="#pressOnSendBtn" />
+    <Button alignment="BOTTOM_CENTER"
+            text="Send" onAction="#pressOnSendBtn" />
 
-    <ListView fx:id="filesList" VBox.vgrow="ALWAYS"/>
-    <GridPane>
-            <TitledPane text="testGridPane"  />
+    <ListView fx:id="filesList" VBox.vgrow="SOMETIMES"/>
+<GridPane>
+   <FlowPane>
+       
+   </FlowPane>
 
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="80.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
-        </columnConstraints>
-
-    </GridPane>
+</GridPane>
 </VBox>
