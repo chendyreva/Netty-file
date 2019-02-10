@@ -19,11 +19,10 @@
     <Button alignment="BOTTOM_CENTER"
             text="Send" onAction="#pressOnSendBtn" />
 
-    <ListView fx:id="filesList" VBox.vgrow="SOMETIMES"/>
-<GridPane>
-   <FlowPane>
-       
-   </FlowPane>
+    <ListView fx:id="filesList" VBox.vgrow="SOMETIMES" />
+   <!--<FlowPane>-->
+       <!---->
+   <!--</FlowPane>-->
 
-</GridPane>
+<!--</GridPane>-->
 </VBox>

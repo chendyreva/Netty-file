@@ -19,11 +19,12 @@
     <Button alignment="BOTTOM_CENTER"
             text="Send" onAction="#pressOnSendBtn" />
 
-    <ListView fx:id="filesList" VBox.vgrow="SOMETIMES"/>
-<GridPane>
-   <FlowPane>
-       
-   </FlowPane>
+    <ListView fx:id="filesList" VBox.vgrow="SOMETIMES"
+    style="chocolate, salmon, gold, coral, darkorchid, darkgoldenrod , lightsalmon, black, rosybrown, blue
+    blueviolet, brown" />
+   <!--<FlowPane>-->
+       <!---->
+   <!--</FlowPane>-->
 
-</GridPane>
+<!--</GridPane>-->
 </VBox>
